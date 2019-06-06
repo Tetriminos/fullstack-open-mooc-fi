@@ -1,0 +1,32 @@
+note over browser:
+clicking on the submit button executes
+the .onsubmit event listener on the form
+end note
+
+note over browser:
+the notes array is appended our note
+end note
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
+
+note over browser:
+sendToServer() function is called and the
+note is POSTed to the server as json
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+browser-->>server: { "content": "remake season 8", "date": "2019-06-03T18:27:12.291Z" } (json)
+note over server:
+the new note is added
+end note
+server-->browser: HTTP 201 Created { "message": "note created" }
+
+note over browser:
+{ "message": "note created" }
+is logged to the console due to the
+201 readystate event listener being
+triggered in our js
+end note

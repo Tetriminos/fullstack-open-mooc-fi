@@ -1,0 +1,35 @@
+note over browser:
+clicking on the submit button executes a
+POST request to /new_note with the note text
+end note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+browser-->>server: note: remake season 8 (x-www-form-urlencoded in above request body)
+server-->browser: HTTP 302 Found; Location: /notes
+
+note over browser:
+The server instructs the browser
+to reload the resource /notes
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+server-->browser: HTML-code
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server-->browser: main.css
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server-->browser: main.js
+
+note over browser:
+browser starts executing js-code
+that requests JSON data from server 
+end note
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server-->browser: [{ content: "remake season 8", date: "2019-06-03" }, ...]
+
+note over browser:
+browser executes the event handler
+that renders notes to display
+end note
